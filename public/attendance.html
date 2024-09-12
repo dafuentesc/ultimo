@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asistencia</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center h-screen">
+  <div class="bg-white p-6 rounded-lg shadow-md w-full max-w-md">
+    <h2 class="text-xl font-semibold mb-4">Bienvenido, Usuario</h2>
+    <form id="attendance-form" class="space-y-4">
+      <div>
+        <button type="button" id="mark-entry" class="w-full bg-green-500 text-white font-bold py-3 rounded-lg hover:bg-green-600 focus:outline-none focus:bg-green-700">
+          Marcar Entrada
+        </button>
+      </div>
+      <div>
+        <button type="button" id="mark-exit" class="w-full bg-red-500 text-white font-bold py-2 px-4 rounded-md hover:bg-red-600 focus:outline-none focus:bg-red-700">
+          Marcar Salida
+        </button>
+      </div>
+      <div>
+        <button type="button" id="logout" class="w-full bg-gray-500 text-white font-bold py-2 px-4 rounded-md hover:bg-gray-600 focus:outline-none focus:bg-gray-700">
+          Cerrar Sesión
+        </button>
+      </div>
+    </form>
+  </div>
+  <script>
+    // Obtén el ID del usuario de algún lugar (puede ser una variable global, un cookie, etc.)
+    const userId = 1; // Reemplaza esto con el ID real del usuario
+
+    document.getElementById('mark-entry').addEventListener('click', () => {
+      fetch('/mark-entry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId })
+      })
+      .then(response => response.text())
+      .then(data => alert(data))
+      .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('mark-exit').addEventListener('click', () => {
+      fetch('/mark-exit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ userId })
+      })
+      .then(response => response.text())
+      .then(data => alert(data))
+      .catch(error => console.error('Error:', error));
+    });
+
+    document.getElementById('logout').addEventListener('click', () => {
+      // Redirige al usuario a la página de inicio de sesión
+      window.location.href = '/index.html';
+    });
+  </script>
+</body>
+</html>

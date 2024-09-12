@@ -1,0 +1,22 @@
+{
+  "name": "proyecto_inte",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npx tailwindcss -i ./public/styles.css -o ./public/output.css --watch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "express": "^4.20.0",
+    "mysql": "^2.18.1",
+    "mysql2": "^3.11.2"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.11"
+  }
+}
